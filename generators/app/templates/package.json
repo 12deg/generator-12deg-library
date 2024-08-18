@@ -4,7 +4,7 @@
   "private": true,
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/12deg/billing.git"
+    "url": "git+https://github.com/<%= scope %>/<%= name %>.git"
   },
   "workspaces": [
     "packages/*"
