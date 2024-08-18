@@ -1,0 +1,35 @@
+{
+  "name": "@<%= scope %>/<%= name %>",
+  "version": "<%= version %>",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/12deg/billing.git"
+  },
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "turbo run build",
+    "lint": "turbo run lint",
+    "lint:fix": "turbo run lint:fix",
+    "prepare": "husky",
+    "sort-package": "npx sort-package-json && turbo run sort-package",
+    "test": "turbo run test --parallel",
+    "typecheck": "turbo run typecheck"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "19.4.0",
+    "@commitlint/config-conventional": "19.2.2",
+    "@types/node": "22.4.0",
+    "husky": "9.1.4",
+    "shipjs": "0.26.3",
+    "turbo": "2.0.14",
+    "typescript": "5.5.4"
+  },
+  "packageManager": "pnpm@8.10.5",
+  "engines": {
+    "node": ">=16",
+    "pnpm": ">=8"
+  }
+}
