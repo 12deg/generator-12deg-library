@@ -1,0 +1,7 @@
+language: node_js
+node_js:
+  - v22
+  - v21
+  - v20
+  - v18
+  - v16
