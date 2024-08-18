@@ -1,8 +1,6 @@
-# @12deg/billing
-A set of billing libraries by 12deg.
+# @<%= scope %>/<%= name %>
 
 ## Packages
-  - @12deg/billing-fastify (https://www.npmjs.com/package/@12deg/billing-fastify)
 
 # Installation & Usage
 ## Install dependencies

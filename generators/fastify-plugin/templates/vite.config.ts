@@ -16,8 +16,8 @@ export default defineConfig(({ mode }) => {
           path.dirname(fileURLToPath(import.meta.url)),
           "src/index.ts"
         ),
-        fileName: "12deg-billing-fastify",
-        name: "12degBillingFastify",
+        fileName: "<%= scope %>-<%= name %>",
+        name: "<%= displayName %>",
       },
       rollupOptions: {
         external: Object.keys(peerDependencies),

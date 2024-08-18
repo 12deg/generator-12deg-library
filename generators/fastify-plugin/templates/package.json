@@ -1,23 +1,23 @@
 {
-  "name": "@12deg/billing-fastify",
-  "version": "0.0.1",
-  "description": "Billing plugin for fastify",
-  "homepage": "https://github.com/12deg/billing/tree/main/packages/fastify#readme",
+  "name": "@<%= scope %>/<%= name %>",
+  "version": "@<%= version %>",
+  "description": "<%= baseName %> plugin for fastify",
+  "homepage": "https://github.com/<%= scope %>/<%= name %>",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/12deg/billing.git",
+    "url": "git+https://github.com/<%= scope %>/<%= name %>.git",
     "directory": "packages/fastify"
   },
   "license": "MIT",
   "type": "module",
   "exports": {
     ".": {
-      "import": "./dist/12deg-billing-fastify.js",
-      "require": "./dist/12deg-billing-fastify.umd.cjs"
+      "import": "./dist/<%= scope %>-<%= name %>.js",
+      "require": "./dist/<%= scope %>-<%= name %>.umd.cjs"
     }
   },
-  "main": "./dist/12deg-billing-fastify.umd.cjs",
-  "module": "./dist/12deg-billing-fastify.js",
+  "main": "./dist/<%= scope %>-<%= name %>-fastify.umd.cjs",
+  "module": "./dist/<%= scope %>-<%= name %>-fastify.js",
   "types": "./dist/types/index.d.ts",
   "files": [
     "dist"

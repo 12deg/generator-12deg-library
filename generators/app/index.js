@@ -1,6 +1,8 @@
 import chalk from "chalk";
 import Generator from "yeoman-generator";
 
+import FastifyPluginGenerator from "../fastify-plugin/index.js";
+
 export default class PackageMonorepoGenerator extends Generator {
   async prompting() {
     this.props = await this.prompt([
@@ -20,6 +22,12 @@ export default class PackageMonorepoGenerator extends Generator {
         name: "version",
         type: "input",
       },
+      {
+        default: true,
+        message: "Include fastify plugin?",
+        name: "fastifyPlugin",
+        type: "confirm",
+      }
     ]);
   };
 
@@ -38,5 +46,19 @@ export default class PackageMonorepoGenerator extends Generator {
         }
       },
     );
+
+    if (this.props.fastifyPlugin) {
+      this.composeWith(
+        { 
+          Generator: FastifyPluginGenerator, 
+          path: "../fastify-plugin/index.js"
+        },
+        {
+          baseName: this.props.name,
+          scope: this.props.scope,
+          version: this.props.version,
+        }
+      );
+    }
   }
 };
