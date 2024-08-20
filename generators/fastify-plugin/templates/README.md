@@ -1,4 +1,4 @@
-# @12deg/billing-fastify
+# @<%= scope %>/<%= name %>
 
 A [Fastify](https://github.com/fastify/fastify) plugin that provides an easy integration of billing.
 
@@ -7,27 +7,27 @@ A [Fastify](https://github.com/fastify/fastify) plugin that provides an easy int
 Install with npm:
 
 ```bash
-npm install @12deg/billing-fastify
+npm install @<%= scope %>/<%= name %>
 ```
 
 Install with pnpm:
 
 ```bash
-pnpm add --filter "@scope/project" @12deg/billing-fastify
+pnpm add --filter "@scope/project" @<%= scope %>/<%= name %>
 ```
 
 ## Usage
 Register the plugin with your fastify instance in `src/index.ts`:
 
 ```typescript
-import billingPlugin from "@12deg/billing-fastify";
+import plugin from "@<%= scope %>/<%= name %>";
 import Fastify from "fastify";
 
 const start = async () => {
   const fastify = await Fastify();
 
-  // Register billing-fastify plugin
-  await fastify.register(billingPlugin);
+  // Register <%= name %> plugin
+  await fastify.register(plugin);
 
   try {
     await fastify.listen({
