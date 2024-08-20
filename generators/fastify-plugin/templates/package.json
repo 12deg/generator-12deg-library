@@ -1,11 +1,11 @@
 {
   "name": "@<%= scope %>/<%= name %>",
-  "version": "@<%= version %>",
+  "version": "<%= version %>",
   "description": "<%= baseName %> plugin for fastify",
-  "homepage": "https://github.com/<%= scope %>/<%= name %>",
+  "homepage": "https://github.com/<%= scope %>/<%= baseName %>/tree/main/packages/fastify#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/<%= scope %>/<%= name %>.git",
+    "url": "git+https://github.com/<%= scope %>/<%= baseName %>.git",
     "directory": "packages/fastify"
   },
   "license": "MIT",
@@ -16,8 +16,8 @@
       "require": "./dist/<%= scope %>-<%= name %>.umd.cjs"
     }
   },
-  "main": "./dist/<%= scope %>-<%= name %>-fastify.umd.cjs",
-  "module": "./dist/<%= scope %>-<%= name %>-fastify.js",
+  "main": "./dist/<%= scope %>-<%= name %>.umd.cjs",
+  "module": "./dist/<%= scope %>-<%= name %>.js",
   "types": "./dist/types/index.d.ts",
   "files": [
     "dist"
