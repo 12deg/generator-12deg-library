@@ -1,4 +1,3 @@
-import chalk from "chalk";
 import Generator from "yeoman-generator";
 
 export default class FastifyPluginGenerator extends Generator {

@@ -24,10 +24,10 @@
     "lint": "eslint",
     "lint:fix": "eslint --fix",
     "prepare": "husky",
+    "release": "shipjs prepare",
     "sort-package": "npx sort-package-json",
     "pretest": "eslint .",
-    "test": "jest",
-    "release": "shipjs prepare"
+    "test": "jest"
   },
   "jest": {
     "testEnvironment": "node"
