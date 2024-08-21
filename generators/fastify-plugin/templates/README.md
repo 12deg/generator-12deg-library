@@ -1,6 +1,6 @@
 # @<%= scope %>/<%= name %>
 
-A [Fastify](https://github.com/fastify/fastify) plugin that provides an easy integration of billing.
+A [Fastify](https://github.com/fastify/fastify) plugin that provides an easy integration of <%= scope %>.
 
 ## Installation
 
