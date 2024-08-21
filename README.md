@@ -44,6 +44,12 @@ This command will create a directory with the name you provide as `Package name`
 cd <Package name>
 ```
 
+This command install the required dependencies and create a `pnpm-lock.yaml` file:
+
+```bash
+make install
+```
+
 ### Initialize git repository
 
 Initialize a Git repository in your new project directory:
