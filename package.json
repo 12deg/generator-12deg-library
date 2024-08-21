@@ -27,10 +27,14 @@
     "release": "shipjs prepare",
     "sort-package": "npx sort-package-json",
     "pretest": "eslint .",
-    "test": "jest"
+    "test": "jest --passWithNoTests"
   },
   "jest": {
-    "testEnvironment": "node"
+    "testEnvironment": "node",
+    "testPathIgnorePatterns": [
+      "node_modules/",
+      "generators/.*/templates/"
+    ]
   },
   "dependencies": {
     "yeoman-environment": "4.4.1",
