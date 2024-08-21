@@ -20,14 +20,14 @@ pnpm add --filter "@scope/project" @<%= scope %>/<%= name %>
 Register the plugin with your fastify instance in `src/index.ts`:
 
 ```typescript
-import <%= baseName %>Plugin from "@<%= scope %>/<%= name %>";
+import plugin from "@<%= scope %>/<%= name %>";
 import Fastify from "fastify";
 
 const start = async () => {
   const fastify = await Fastify();
 
   // Register <%= name %> plugin
-  await fastify.register(<%= baseName %>Plugin);
+  await fastify.register(plugin);
 
   try {
     await fastify.listen({
