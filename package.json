@@ -1,5 +1,5 @@
 {
-  "name": "generator-package-monorepo",
+  "name": "generator-library",
   "version": "0.1.0",
   "description": "",
   "keywords": [
@@ -7,7 +7,7 @@
     "yeoman-generator"
   ],
   "homepage": "",
-  "repository": "generator-package-monorepo",
+  "repository": "generator-library",
   "license": "MIT",
   "author": {
     "name": "12 Degres SAS",

@@ -35,7 +35,7 @@ npm link
 Run the following command and follow the prompts to generate your monorepo setup:
 
 ```bash
-yo package-monorepo
+yo library
 ```
 
 This command will create a directory with the name you provide as `Package name`. Navigate to this directory:
@@ -62,7 +62,7 @@ git init
 To generate only the fastify plugin, use:
 
 ```bash
-yo package-monorepo:fastify-plugin
+yo library:fastify-plugin
 ```
 
 This will create the fastify plugin setup without the rest of the monorepo structure.
