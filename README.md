@@ -1,6 +1,6 @@
-# Yeoman generator for package monorepo
+# Yeoman generator for library
 
-This Yeoman generator helps you set up a package monorepo with two available generators: `app` and `fastify-plugin`.
+This Yeoman generator helps you set up a library (monorepo) with two available generators: `app` and `fastify-plugin`.
 
 ## Generators
   - **app**: sets up a new monorepo
