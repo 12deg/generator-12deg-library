@@ -1,12 +1,12 @@
 import Fastify from "fastify";
 import { describe, it, expect } from "vitest";
 
-import <%= baseName %>Plugin from "../src/index";
+import plugin from "../src/index";
 
-describe("<%= baseName %> plugin", () => {
+describe("plugin", () => {
   it("should be exported as default and register without issues", async () => {
     const fastify = Fastify();
 
-    await expect(fastify.register(<%= baseName %>Plugin)).resolves.not.toThrow();
+    await expect(fastify.register(plugin)).resolves.not.toThrow();
   });
 });
