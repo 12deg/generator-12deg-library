@@ -1,6 +1,6 @@
 # @<%= scope %>/<%= name %>
 
-A [Fastify](https://github.com/fastify/fastify) plugin that provides an easy integration of <%= scope %>.
+A [Fastify](https://github.com/fastify/fastify) plugin that provides an easy integration of <%= baseName %>.
 
 ## Installation
 
@@ -20,14 +20,14 @@ pnpm add --filter "@scope/project" @<%= scope %>/<%= name %>
 Register the plugin with your fastify instance in `src/index.ts`:
 
 ```typescript
-import plugin from "@<%= scope %>/<%= name %>";
+import <%= baseName %>Plugin from "@<%= scope %>/<%= name %>";
 import Fastify from "fastify";
 
 const start = async () => {
   const fastify = await Fastify();
 
   // Register <%= name %> plugin
-  await fastify.register(plugin);
+  await fastify.register(<%= baseName %>Plugin);
 
   try {
     await fastify.listen({
