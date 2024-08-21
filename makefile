@@ -7,11 +7,11 @@ install:
 
 lint:
 	@printf "\033[0;32m>>> Lint code\033[0m\n"
-	npm lint
+	npm run lint
 
 lint.fix:
 	@printf "\033[0;32m>>> Lint code\033[0m\n"
-	npm lint:fix
+	npm run lint:fix
 
 outdated:
 	@printf "\033[0;32m>>> Check for outdated dependencies\033[0m\n"
@@ -27,8 +27,4 @@ release:
 
 sort-package:
 	@printf "\033[0;32m>>> Format package.json\033[0m\n"
-	npm sort-package
-
-typecheck:
-	@printf "\033[0;32m>>> Running Type check\033[0m\n"
-	npm typecheck
+	npm run sort-package
