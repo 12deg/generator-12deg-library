@@ -1,6 +1,8 @@
 # @<%= scope %>/<%= name %>
 
-A [Fastify](https://github.com/fastify/fastify) plugin that provides an easy integration of <%= baseName %>.
+<%_ if (monorepo) { _%>
+A [Fastify](https://github.com/fastify/fastify) plugin for <%= baseName %>.
+<%_ } _%>
 
 ## Installation
 

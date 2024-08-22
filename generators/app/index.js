@@ -2,7 +2,7 @@ import Generator from "yeoman-generator";
 
 import FastifyPluginGenerator from "../fastify-plugin/index.js";
 
-export default class PackageMonorepoGenerator extends Generator {
+export default class LibraryGenerator extends Generator {
   async prompting() {
     this.props = await this.prompt([
       {
@@ -55,6 +55,7 @@ export default class PackageMonorepoGenerator extends Generator {
         {
           baseName: this.props.name,
           destinationPath: `${this.props.name}/packages/fastify`,
+          monorepo: true,
           scope: this.props.scope,
           version: this.props.version,
         }

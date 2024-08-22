@@ -2,9 +2,6 @@ import Generator from "yeoman-generator";
 
 export default class FastifyPluginGenerator extends Generator {
   constructor(args, opts) {
-    // stop running auto install after generation
-    opts["skip-install"] = true;
-
     super(args, opts);
   }
 
@@ -13,7 +10,7 @@ export default class FastifyPluginGenerator extends Generator {
   }
 
   async prompting() {
-    const prompts = [
+    this.props = await this.prompt([
       {
         default: this.options.scope,
         message: "Fastify plugin scope",
@@ -32,24 +29,25 @@ export default class FastifyPluginGenerator extends Generator {
         name: "version",
         type: "input",
       },
-    ];
-
-    if (!this.options.destinationPath && !this.args[0]) {
-      prompts.push({
-        default: this.args[0] || ".",
-        message: "Fastify plugin destination path",
-        name: "destinationPath",
-        type: "input",
-      });
-    }
-    
-    this.props = await this.prompt(prompts);
-    
-    if (!this.props["destinationPath"]) {
-      this.props["destinationPath"] = this.options.destinationPath || this.args[0] || ".";
-    }
-
-    this.props.baseName = this.options.baseName || this.props.name.split("-")[0];
+    ].concat(
+      this.options.destinationPath? [] : [
+        {
+          default: ".",
+          message: "Fastify plugin destination path",
+          name: "destinationPath",
+          type: "input",
+        },
+      ]
+    ).concat(
+      this.options.monorepo? [] : [
+        {
+          default: false,
+          message: "is this fastify plugin part of a monorepo",
+          name: "monorepo",
+          type: "confirm",
+        },
+      ]
+    ));
 
     this.props["displayName"] = 
       [this.props.scope, this.props.name]
@@ -62,10 +60,10 @@ export default class FastifyPluginGenerator extends Generator {
   async writing() {
     await this.fs.copyTplAsync(
       this.templatePath(),
-      this.destinationPath(this.props.destinationPath),
+      this.destinationPath(this.options.destinationPath || this.props.destinationPath),
       {
-        ...this.options,
         ...this.props,
+        ...this.options,
       },
       {},
       {
