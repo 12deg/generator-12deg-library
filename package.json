@@ -9,10 +9,10 @@
     "package",
     "yeoman"
   ],
-  "homepage": "https://github.com/12deg/generator-library",
+  "homepage": "https://github.com/12deg/generator-12deg-library",
   "repository": {
     "type": "git",
-    "url": "https://github.com/12deg/generator-library.git"
+    "url": "https://github.com/12deg/generator-12deg-library.git"
   },
   "license": "MIT",
   "author": {
