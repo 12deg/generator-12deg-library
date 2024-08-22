@@ -18,18 +18,6 @@ To install `shipjs` and `yo` globally, run:
 npm install -g shipjs yo
 ```
 
-## Installation
-1. Clone this repo locally and navigate to the project directory and install dependencies:
-
-```bash
-make install
-```
-
-2. Link this generator locally so that the `yo` command can recognize it:
-
-```bash
-npm link
-```
 
 ## Usage
 
@@ -37,7 +25,7 @@ npm link
 Run the following command and follow the prompts to generate your monorepo setup:
 
 ```bash
-yo library
+yo 12deg-library
 ```
 
 This command will create a directory with the name you provide as `Package name`. Navigate to this directory:
