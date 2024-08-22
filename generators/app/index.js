@@ -22,6 +22,12 @@ export default class PackageMonorepoGenerator extends Generator {
         type: "input",
       },
       {
+        default: "false",
+        message: "Make package private",
+        name: "private",
+        type: "confirm",
+      },
+      {
         default: true,
         message: "Include fastify plugin?",
         name: "fastifyPlugin",

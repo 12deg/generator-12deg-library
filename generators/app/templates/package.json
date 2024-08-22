@@ -1,7 +1,9 @@
 {
   "name": "@<%= scope %>/<%= name %>",
   "version": "<%= version %>",
+<%_ if (private) { _%>
   "private": true,
+<%_ } _%>
   "repository": {
     "type": "git",
     "url": "git+https://github.com/<%= scope %>/<%= name %>.git"
@@ -14,6 +16,8 @@
     "lint": "turbo run lint",
     "lint:fix": "turbo run lint:fix",
     "prepare": "husky",
+    "publish": "npx shipjs trigger",
+    "release": "npx shipjs prepare",
     "sort-package": "npx sort-package-json && turbo run sort-package",
     "test": "turbo run test --parallel",
     "typecheck": "turbo run typecheck"
@@ -22,7 +26,7 @@
     "@commitlint/cli": "19.4.0",
     "@commitlint/config-conventional": "19.2.2",
     "@types/node": "22.4.0",
-    "husky": "9.1.4",
+    "husky": "9.1.5",
     "shipjs": "0.26.4",
     "turbo": "2.0.14",
     "typescript": "5.5.4"
