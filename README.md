@@ -1,6 +1,8 @@
 # Yeoman generator for library
 
-This yeoman generator helps set up a library (monorepo).
+This yeoman generator helps set up a library. The library is designed as a monorepo that is expected to contain several independent but related packages. 
+
+The generator includes a child generator that helps generate a Fastify plugin as one such package in the library.
 
 ## Generators
   - **app**: sets up a new monorepo
