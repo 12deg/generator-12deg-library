@@ -3,25 +3,10 @@ import Generator from "yeoman-generator";
 export default class FastifyPluginGenerator extends Generator {
   constructor(args, opts) {
     super(args, opts);
+  }
 
-    this.option("scope", {
-      type: String,
-      required: false,
-      defaults: "",
-      desc: "Package scope"
-    });
-
-    this.option("baseName", {
-      type: String,
-      defaults: false,
-      desc: "Package base name"
-    });
-
-    this.option("version", {
-      type: String,
-      defaults: "0.1.0",
-      desc: "Package initial version"
-    });
+  initializing() {
+    this.props = {};
   }
 
   async prompting() {
@@ -33,37 +18,46 @@ export default class FastifyPluginGenerator extends Generator {
         type: "input",
       },
       {
-        default: `${this.options.baseName}-fastify`,
+        default: this.options.baseName? `${this.options.baseName}-fastify`: "fastify",
         message: "Fastify plugin name",
         name: "name",
         type: "input",
       },
       {
-        default: this.options.version,
+        default: this.options.version || "0.1.0",
         message: "Fastify plugin version",
         name: "version",
         type: "input",
       },
-    ]);
+    ].concat(
+      this.options.destinationPath? [] : [
+        {
+          default: ".",
+          message: "Fastify plugin destination path",
+          name: "destinationPath",
+          type: "input",
+        },
+      ]
+    ));
 
     this.props["displayName"] = 
       [this.props.scope, this.props.name]
-        .join("-")
-        .split("-")
-        .map(token => token.charAt(0).toUpperCase() + token.slice(1))
-        .join("");
+      .join("-")
+      .split("-")
+      .map(token => token.charAt(0).toUpperCase() + token.slice(1))
+      .join("");
   };
 
-  writing() {
-    this.fs.copyTplAsync(
+  async writing() {
+    await this.fs.copyTplAsync(
       this.templatePath(),
-      this.destinationPath(`${this.options.baseName}/packages/fastify`),
+      this.destinationPath(this.options.destinationPath || this.props.destinationPath),
       {
         ...this.props,
         ...this.options,
       },
       {},
-      { 
+      {
         globOptions: { 
           dot: true,
         }

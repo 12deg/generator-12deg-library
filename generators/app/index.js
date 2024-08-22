@@ -30,8 +30,8 @@ export default class PackageMonorepoGenerator extends Generator {
     ]);
   };
 
-  writing() {
-    this.fs.copyTplAsync(
+  async writing() {
+    await this.fs.copyTplAsync(
       this.templatePath(),
       this.destinationPath(this.props.name),
       {
@@ -47,13 +47,14 @@ export default class PackageMonorepoGenerator extends Generator {
     );
 
     if (this.props.fastifyPlugin) {
-      this.composeWith(
+      await this.composeWith(
         { 
           Generator: FastifyPluginGenerator, 
           path: "../fastify-plugin/index.js"
         },
         {
           baseName: this.props.name,
+          destinationPath: `${this.props.name}/packages/fastify`,
           scope: this.props.scope,
           version: this.props.version,
         }
