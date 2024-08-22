@@ -17,7 +17,6 @@ To install `yo` globally, run:
 npm install -g yo
 ```
 
-
 ## Usage
 
 ### Generate the monorepo
@@ -33,7 +32,7 @@ This command will create a directory with the name you provide as `Package name`
 To generate only the fastify plugin, use:
 
 ```bash
-yo 12deg-library:fastify-plugin
+yo 12deg-library:fastify-plugin <name>
 ```
 
 This will create the fastify plugin setup without the rest of the monorepo structure.
