@@ -1,16 +1,22 @@
 {
-  "name": "generator-library",
+  "name": "generator-12deg-library",
   "version": "0.1.0",
   "description": "",
   "keywords": [
     "devops",
-    "yeoman-generator"
+    "generator",
+    "library",
+    "package",
+    "yeoman"
   ],
-  "homepage": "",
-  "repository": "generator-library",
+  "homepage": "https://github.com/12deg/generator-library",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/12deg/generator-library.git"
+  },
   "license": "MIT",
   "author": {
-    "name": "12 Degree SAS",
+    "name": "12 Degres SAS",
     "email": "info@12deg.com",
     "url": "https://12deg.com"
   },
