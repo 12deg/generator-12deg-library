@@ -6,7 +6,7 @@ export default [
   ...tseslint.configs.recommended,
   { 
     ignores: [
-      "**/.giignore",
+      "**/.gitignore",
       "**/templates",
       "coverage",
       "eslint.config.js",
