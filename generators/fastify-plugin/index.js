@@ -34,9 +34,9 @@ export default class FastifyPluginGenerator extends Generator {
       },
     ];
 
-    if (!this.options.baseName) {
+    if (!this.options.destinationPath && !this.args[0]) {
       prompts.push({
-        default: this.args[0] || "",
+        default: this.args[0] || ".",
         message: "Fastify plugin destination path",
         name: "destinationPath",
         type: "input",
@@ -44,6 +44,10 @@ export default class FastifyPluginGenerator extends Generator {
     }
     
     this.props = await this.prompt(prompts);
+    
+    if (!this.props["destinationPath"]) {
+      this.props["destinationPath"] = this.options.destinationPath || this.args[0] || ".";
+    }
 
     this.props.baseName = this.options.baseName || this.props.name.split("-")[0];
 
@@ -58,7 +62,7 @@ export default class FastifyPluginGenerator extends Generator {
   async writing() {
     await this.fs.copyTplAsync(
       this.templatePath(),
-      this.destinationPath(this.options.destinationPath || this.props.destinationPath),
+      this.destinationPath(this.props.destinationPath),
       {
         ...this.options,
         ...this.props,
