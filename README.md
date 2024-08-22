@@ -10,12 +10,11 @@ The generator includes a child generator that helps generate a Fastify plugin as
 
 ## Requirements
   - [yo](https://github.com/yeoman/yo)
-  - [shipjs](https://github.com/algolia/shipjs) (optional, for deployment purposes)
 
-To install `shipjs` and `yo` globally, run:
+To install `yo` globally, run:
 
 ```bash
-npm install -g shipjs yo
+npm install -g yo
 ```
 
 
@@ -28,31 +27,13 @@ Run the following command and follow the prompts to generate your monorepo setup
 yo 12deg-library
 ```
 
-This command will create a directory with the name you provide as `Package name`. Navigate to this directory:
-
-```bash
-cd <Package name>
-```
-
-This command install the required dependencies and create a `pnpm-lock.yaml` file:
-
-```bash
-make install
-```
-
-### Initialize git repository
-
-Initialize a Git repository in your new project directory:
-
-```bash
-git init
-```
+This command will create a directory with the name you provide as `Package name`.
 
 ### Generate a fastify plugin only (experimental)
 To generate only the fastify plugin, use:
 
 ```bash
-yo library:fastify-plugin
+yo 12deg-library:fastify-plugin
 ```
 
 This will create the fastify plugin setup without the rest of the monorepo structure.
