@@ -33,7 +33,7 @@ export default class FastifyPluginGenerator extends Generator {
     ];
 
     if (!this.options.monorepo) {
-      prompts.push({
+      prompts.unshift({
         message: "Choose the type of installation:",
         name: "installationType",
         type: "list",
@@ -59,7 +59,7 @@ export default class FastifyPluginGenerator extends Generator {
     if (!this.options.baseName && this.props.installationType != "standalone") {
       const { baseName } = await this.prompt({
         default: this.props.scope,
-        message: `Enter the ${this.props.installationType} project name`,
+        message: `What is the ${this.props.installationType} project name`,
         name: "baseName",
         type: "input",
       });
@@ -69,12 +69,12 @@ export default class FastifyPluginGenerator extends Generator {
       this.props["baseName"] = this.options.baseName;
     }
 
-    if (!this.options.destinationPath && this.props.installationType != "standalone") {
+    if (!this.options.destinationPath) {
       const defaultPath = this.props.installationType === "library"
-        ? "packages/fastify"
+        ? "./packages/fastify"
         : this.props.installationType === "app"
-        ? "libs"
-        : ".";
+        ? "./libs/fastify"
+        : `./${this.props.name}`;
 
       const { destinationPath } = await this.prompt({
         default: defaultPath,
