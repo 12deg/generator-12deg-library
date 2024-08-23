@@ -2,7 +2,7 @@
   "name": "@<%= scope %>/<%= name %>",
   "version": "<%= version %>",
   "description": "<%= description %>",
-<%_ if (monorepo) { _%>
+<%_ if (installationType == 'monorepo') { _%>
   "homepage": "https://github.com/<%= scope %>/<%= baseName %>/tree/main/packages/fastify#readme",
   "repository": {
     "type": "git",
@@ -10,11 +10,11 @@
     "directory": "<%= destinationPath %>"
   },
 <%_ } _%>
-<%_ if (!monorepo) { _%>
-"homepage": "https://github.com/<%= scope %>/<%= name %>#readme",
-"repository": {
+<%_ if (installationType == 'standalone') { _%>
+  "homepage": "https://github.com/<%= scope %>/<%= baseName %>#readme",
+  "repository": {
     "type": "git",
-    "url": "git+https://github.com/<%= scope %>/<%= name %>.git"
+    "url": "git+https://github.com/<%= scope %>/<%= baseName %>.git"
   },
 <%_ } _%>
   "license": "MIT",

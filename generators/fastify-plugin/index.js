@@ -32,32 +32,47 @@ export default class FastifyPluginGenerator extends Generator {
       },
     ];
 
-    if (!this.options.destinationPath) {
+    if (!this.options.monorepo) {
       prompts.push({
+        message: "Choose the type of installation",
+        name: "installationType",
+        type: "list",
+        choices: [
+          {
+            name: "Generate this fastify plugin in monorepo",
+            value: "monorepo"
+          },
+          {
+            name: "Generate this fastify plugin in apps",
+            value: "apps"
+          },
+          {
+            name: "Standalone",
+            value: "standalone"
+          },
+        ],
+      });
+    }
+
+    this.props = await this.prompt(prompts);
+
+    if (!this.options.destinationPath) {
+      const { destinationPath } = await this.prompt({
         default: ".",
         message: "Destination path",
         name: "destinationPath",
         type: "input",
       });
-    }
 
-    if (!this.options.monorepo) {
-      prompts.push({
-        default: false,
-        message: "Is this fastify plugin part of a monorepo?",
-        name: "monorepo",
-        type: "confirm",
-      });
+      this.props["destinationPath"] = destinationPath;
     }
-
-    this.props = await this.prompt(prompts);
 
     if (!this.options.baseName) {
       this.props["baseName"] = false;
     }
 
     if (this.props.monorepo) {
-      const { baseName } = await this.prompts({
+      const { baseName } = await this.prompt({
         default: "",
         message: "Enter the monorepo name",
         name: "baseName",
@@ -74,8 +89,8 @@ export default class FastifyPluginGenerator extends Generator {
     const { description } = await this.prompt({
       default: capitalizeFirstLetter(`${this.props.name ?? "A"} plugin for fastify`),
       message: "Enter description",
-      name: description,
-      type: input
+      name: "description",
+      type: "input"
     }) 
 
     this.props["description"] = description;
