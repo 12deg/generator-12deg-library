@@ -24,13 +24,18 @@ export default class FastifyPluginGenerator extends Generator {
         name: "name",
         type: "input",
       },
-      {
-        default: this.options.version || "0.1.0",
+    ];
+
+    if (!this.options.version) {
+      prompts.push({
+        default: "0.1.0",
         message: "Fastify plugin version",
         name: "version",
         type: "input",
-      },
-    ];
+      });
+    } else {
+      this.props.version = this.options.version;
+    }
 
     if (!this.options.monorepo) {
       prompts.push({
@@ -56,10 +61,10 @@ export default class FastifyPluginGenerator extends Generator {
 
     this.props = await this.prompt(prompts);
 
-    if (!this.options.baseName && this.props.installationType != "standalone") {
+    if (!this.options.baseName && this.props.installationType == "library") {
       const { baseName } = await this.prompt({
         default: this.props.scope,
-        message: `What is the project name (e.g., github repo name)?`,
+        message: `Project name (e.g., github repo name)`,
         name: "baseName",
         type: "input",
       });
