@@ -1,5 +1,5 @@
 module.exports = { 
-  appname: "@dzangolab/generator-library",
+  appname: "generator-12deg-library",
   buildCommand: () => null,
   publishCommand: () => {
     return "npm publish --access public";
