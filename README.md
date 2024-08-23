@@ -32,8 +32,7 @@ This command will create a directory with the name you provide as `Package name`
 To generate only the fastify plugin, use:
 
 ```bash
-yo 12deg-library:fastify-plugin <path>
+yo 12deg-library:fastify-plugin
 ```
-**Note**: `<path>` is the relative path where the fastify plugin will be generated (e.g. `packages/fastify-plugin`). If not provided, the generator will prompt you to input the path. If no path is provided, the fastify plugin will be generated in the current directory.
 
 This will create the fastify plugin setup without the rest of the monorepo structure.

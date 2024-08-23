@@ -42,7 +42,7 @@ export default class FastifyPluginGenerator extends Generator {
       this.options.monorepo? [] : [
         {
           default: false,
-          message: "is this fastify plugin part of a monorepo",
+          message: "Is this fastify plugin part of a monorepo",
           name: "monorepo",
           type: "confirm",
         },
@@ -62,8 +62,8 @@ export default class FastifyPluginGenerator extends Generator {
       this.templatePath(),
       this.destinationPath(this.options.destinationPath || this.props.destinationPath),
       {
-        ...this.props,
         ...this.options,
+        ...this.props,
       },
       {},
       {
