@@ -29,7 +29,7 @@
   },
   "jest": {
     "testEnvironment": "node",
-    "testPathIgnorePatterns": ["node_modules/", "generators/.*/templates/"]
+    "modulePathIgnorePatterns": ["node_modules/", "generators/.*/templates/"]
   },
   "dependencies": {
     "yeoman-environment": "4.4.1",
