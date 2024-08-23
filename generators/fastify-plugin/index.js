@@ -1,3 +1,4 @@
+import path from "node:path";
 import Generator from "yeoman-generator";
 
 export default class FastifyPluginGenerator extends Generator {
@@ -10,7 +11,7 @@ export default class FastifyPluginGenerator extends Generator {
   }
 
   async prompting() {
-    const prompts= [
+    const prompts = [
       {
         default: this.options.scope,
         message: "Fastify plugin scope",
@@ -30,16 +31,16 @@ export default class FastifyPluginGenerator extends Generator {
         type: "input",
       },
     ];
-    
-    if (!this.options.destinationPath && !this.args[0]) {
+
+    if (!this.options.destinationPath) {
       prompts.push({
-        default: this.args[0] || ".",
+        default: ".",
         message: "Destination path",
         name: "destinationPath",
         type: "input",
       });
     }
-    
+
     if (!this.options.monorepo) {
       prompts.push({
         default: false,
@@ -50,14 +51,34 @@ export default class FastifyPluginGenerator extends Generator {
     }
 
     this.props = await this.prompt(prompts);
-    
+
     if (!this.options.baseName) {
       this.props["baseName"] = false;
     }
-    
-    if (!this.props["destinationPath"]) {
-      this.props["destinationPath"] = this.options.destinationPath || this.args[0] || ".";
+
+    if (this.props.monorepo) {
+      const { baseName } = await this.prompts({
+        default: "",
+        message: "Enter the monorepo name",
+        name: "baseName",
+        type: "confirm",
+      });
+
+      this.props["baseName"] = baseName; 
     }
+
+    if (!this.props["destinationPath"]) {
+      this.props["destinationPath"] = this.options.destinationPath? path.join(baseName, this.options.destinationPath) : ".";
+    }
+
+    const { description } = await this.prompt({
+      default: capitalizeFirstLetter(`${this.props.name ?? "A"} plugin for fastify`),
+      message: "Enter description",
+      name: description,
+      type: input
+    }) 
+
+    this.props["description"] = description;
 
     this.props["displayName"] = 
       [this.props.scope, this.props.name]
@@ -65,6 +86,7 @@ export default class FastifyPluginGenerator extends Generator {
       .split("-")
       .map(token => token.charAt(0).toUpperCase() + token.slice(1))
       .join("");
+
   };
 
   async writing() {
@@ -83,4 +105,8 @@ export default class FastifyPluginGenerator extends Generator {
       },
     );
   }
+};
+
+const capitalizeFirstLetter = (sentence) => {
+  return sentence ? sentence.charAt(0).toUpperCase() + sentence.slice(1) : sentence;
 };
