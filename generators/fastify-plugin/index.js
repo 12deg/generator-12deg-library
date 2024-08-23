@@ -56,39 +56,41 @@ export default class FastifyPluginGenerator extends Generator {
 
     this.props = await this.prompt(prompts);
 
+    if (!this.options.baseName) {
+      const { baseName } = await this.prompt({
+        default: this.props.scope,
+        message: "Enter the monorepo/app project name",
+        name: "baseName",
+        type: "input",
+      });
+
+      this.props["baseName"] = baseName; 
+    } else {
+      this.props["baseName"] = this.options.baseName;
+    }
+
     if (!this.options.destinationPath) {
+      const defaultPath = this.props.installationType === "monorepo"
+        ? "packages/fastify"
+        : this.props.installationType === "apps"
+        ? "libs"
+        : ".";
+
       const { destinationPath } = await this.prompt({
-        default: ".",
+        default: defaultPath,
         message: "Destination path",
         name: "destinationPath",
         type: "input",
       });
 
       this.props["destinationPath"] = destinationPath;
-    }
-
-    if (!this.options.baseName) {
-      this.props["baseName"] = false;
-    }
-
-    if (this.props.monorepo) {
-      const { baseName } = await this.prompt({
-        default: "",
-        message: "Enter the monorepo name",
-        name: "baseName",
-        type: "confirm",
-      });
-
-      this.props["baseName"] = baseName; 
-    }
-
-    if (!this.props["destinationPath"]) {
-      this.props["destinationPath"] = this.options.destinationPath? path.join(baseName, this.options.destinationPath) : ".";
+    } else {
+      this.props["destinationPath"] = this.options.destinationPath;
     }
 
     const { description } = await this.prompt({
-      default: capitalizeFirstLetter(`${this.props.name ?? "A"} plugin for fastify`),
-      message: "Enter description",
+      default: capitalizeFirstLetter(`${this.options.name || this.props.name || "A"} plugin for fastify.`),
+      message: "Enter fastify plugin description",
       name: "description",
       type: "input"
     }) 
@@ -102,12 +104,15 @@ export default class FastifyPluginGenerator extends Generator {
       .map(token => token.charAt(0).toUpperCase() + token.slice(1))
       .join("");
 
+    if (this.options.monorepo) {
+      this.props["installationType"] = "monorepo";
+    }
   };
 
   async writing() {
     await this.fs.copyTplAsync(
       this.templatePath(),
-      this.destinationPath(this.options.destinationPath || this.props.destinationPath),
+      this.destinationPath(path.join(this.options.baseName || "", this.props.destinationPath )),
       {
         ...this.props,
         ...this.options,
