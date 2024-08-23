@@ -2,7 +2,7 @@
   "name": "@<%= scope %>/<%= name %>",
   "version": "<%= version %>",
   "description": "<%= description %>",
-<%_ if (installationType == 'monorepo') { _%>
+<%_ if (installationType == 'library') { _%>
   "homepage": "https://github.com/<%= scope %>/<%= baseName %>/tree/main/<%= destinationPath %>#readme",
   "repository": {
     "type": "git",

@@ -34,17 +34,17 @@ export default class FastifyPluginGenerator extends Generator {
 
     if (!this.options.monorepo) {
       prompts.push({
-        message: "Choose the type of installation",
+        message: "Choose the type of installation:",
         name: "installationType",
         type: "list",
         choices: [
           {
-            name: "Generate this fastify plugin in monorepo",
-            value: "monorepo"
+            name: "Generate this fastify plugin in library monorepo",
+            value: "library"
           },
           {
-            name: "Generate this fastify plugin in apps",
-            value: "apps"
+            name: "Generate this fastify plugin in app monorepo",
+            value: "app"
           },
           {
             name: "Standalone",
@@ -70,9 +70,9 @@ export default class FastifyPluginGenerator extends Generator {
     }
 
     if (!this.options.destinationPath) {
-      const defaultPath = this.props.installationType === "monorepo"
+      const defaultPath = this.props.installationType === "library"
         ? "packages/fastify"
-        : this.props.installationType === "apps"
+        : this.props.installationType === "app"
         ? "libs"
         : ".";
 
@@ -89,7 +89,7 @@ export default class FastifyPluginGenerator extends Generator {
     }
 
     const { description } = await this.prompt({
-      default: capitalizeFirstLetter(`${this.options.name || this.props.name || "A"} plugin for fastify.`),
+      default: capitalize(`${this.options.name || this.props.name || "A"} plugin for fastify.`),
       message: "Enter fastify plugin description",
       name: "description",
       type: "input"
@@ -105,7 +105,7 @@ export default class FastifyPluginGenerator extends Generator {
       .join("");
 
     if (this.options.monorepo) {
-      this.props["installationType"] = "monorepo";
+      this.props["installationType"] = "library";
     }
   };
 
@@ -127,6 +127,6 @@ export default class FastifyPluginGenerator extends Generator {
   }
 };
 
-const capitalizeFirstLetter = (sentence) => {
-  return sentence ? sentence.charAt(0).toUpperCase() + sentence.slice(1) : sentence;
+const capitalize = (word) => {
+  return word ? word.charAt(0).toUpperCase() + word.slice(1) : word;
 };
