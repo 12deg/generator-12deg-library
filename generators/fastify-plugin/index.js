@@ -10,7 +10,7 @@ export default class FastifyPluginGenerator extends Generator {
   }
 
   async prompting() {
-    this.props = await this.prompt([
+    const prompts= [
       {
         default: this.options.scope,
         message: "Fastify plugin scope",
@@ -29,25 +29,35 @@ export default class FastifyPluginGenerator extends Generator {
         name: "version",
         type: "input",
       },
-    ].concat(
-      this.options.destinationPath? [] : [
-        {
-          default: ".",
-          message: "Fastify plugin destination path",
-          name: "destinationPath",
-          type: "input",
-        },
-      ]
-    ).concat(
-      this.options.monorepo? [] : [
-        {
-          default: false,
-          message: "is this fastify plugin part of a monorepo",
-          name: "monorepo",
-          type: "confirm",
-        },
-      ]
-    ));
+    ];
+    
+    if (!this.options.destinationPath && !this.args[0]) {
+      prompts.push({
+        default: this.args[0] || ".",
+        message: "Destination path",
+        name: "destinationPath",
+        type: "input",
+      });
+    }
+    
+    if (!this.options.monorepo) {
+      prompts.push({
+        default: false,
+        message: "Is this fastify plugin part of a monorepo?",
+        name: "monorepo",
+        type: "confirm",
+      });
+    }
+
+    this.props = await this.prompt(prompts);
+    
+    if (!this.options.baseName) {
+      this.props["baseName"] = false;
+    }
+    
+    if (!this.props["destinationPath"]) {
+      this.props["destinationPath"] = this.options.destinationPath || this.args[0] || ".";
+    }
 
     this.props["displayName"] = 
       [this.props.scope, this.props.name]

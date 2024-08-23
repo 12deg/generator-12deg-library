@@ -11,7 +11,8 @@
   },
 <%_ } _%>
 <%_ if (!monorepo) { _%>
-  "repository": {
+"homepage": "https://github.com/<%= scope %>/<%= name %>#readme",
+"repository": {
     "type": "git",
     "url": "git+https://github.com/<%= scope %>/<%= name %>.git"
   },
