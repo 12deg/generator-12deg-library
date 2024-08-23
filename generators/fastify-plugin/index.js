@@ -59,7 +59,7 @@ export default class FastifyPluginGenerator extends Generator {
     if (!this.options.baseName && this.props.installationType != "standalone") {
       const { baseName } = await this.prompt({
         default: this.props.scope,
-        message: `What is the project name (e.g., GitHub repository name)?`,
+        message: `What is the project name (e.g., github repo name)?`,
         name: "baseName",
         type: "input",
       });
