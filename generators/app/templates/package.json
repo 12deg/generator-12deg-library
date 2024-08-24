@@ -1,8 +1,10 @@
 {
   "name": "@<%= scope %>/<%= name %>",
   "version": "<%= version %>",
+  "homepage": "https://github.com/<%= scope %>/<%= name %>#readme",
 <%_ if (private) { _%>
   "private": true,
+  "license": "UNLICENSED",
 <%_ } _%>
   "repository": {
     "type": "git",
