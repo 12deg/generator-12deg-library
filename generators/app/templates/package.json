@@ -1,6 +1,7 @@
 {
   "name": "@<%= scope %>/<%= name %>",
   "version": "<%= version %>",
+  "homepage": "https://github.com/<%= scope %>/<%= name %>#readme",
   "private": true,
   "repository": {
     "type": "git",

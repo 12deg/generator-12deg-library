@@ -2,7 +2,7 @@ import Generator from "yeoman-generator";
 
 import FastifyPluginGenerator from "../fastify-plugin/index.js";
 
-export default class PackageMonorepoGenerator extends Generator {
+export default class LibraryGenerator extends Generator {
   async prompting() {
     this.props = await this.prompt([
       {
@@ -30,8 +30,8 @@ export default class PackageMonorepoGenerator extends Generator {
     ]);
   };
 
-  writing() {
-    this.fs.copyTplAsync(
+  async writing() {
+    await this.fs.copyTplAsync(
       this.templatePath(),
       this.destinationPath(this.props.name),
       {
@@ -47,13 +47,16 @@ export default class PackageMonorepoGenerator extends Generator {
     );
 
     if (this.props.fastifyPlugin) {
-      this.composeWith(
+      await this.composeWith(
         { 
           Generator: FastifyPluginGenerator, 
           path: "../fastify-plugin/index.js"
         },
         {
           baseName: this.props.name,
+          description: `A fastify plugin for the ${this.props.name} library`,
+          destinationPath: "packages/fastify",
+          installationType: "library",
           scope: this.props.scope,
           version: this.props.version,
         }
