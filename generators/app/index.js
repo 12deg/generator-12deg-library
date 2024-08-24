@@ -54,8 +54,9 @@ export default class LibraryGenerator extends Generator {
         },
         {
           baseName: this.props.name,
+          description: `A fastify plugin for the ${this.props.name} library`,
           destinationPath: "packages/fastify",
-          monorepo: true,
+          installationType: "library",
           scope: this.props.scope,
           version: this.props.version,
         }
