@@ -22,10 +22,22 @@ export default class LibraryGenerator extends Generator {
         type: "input",
       },
       {
-        default: "false",
-        message: "Make package private",
-        name: "private",
-        type: "confirm",
+        default: "",
+        message: "Author name",
+        name: "authorName",
+        type: "input",
+      },
+      {
+        default: "",
+        message: "Author email",
+        name: "authorEmail",
+        type: "input",
+      },
+      {
+        default: "",
+        message: "Author website",
+        name: "authorWebsite",
+        type: "input",
       },
       {
         default: true,
@@ -59,11 +71,13 @@ export default class LibraryGenerator extends Generator {
           path: "../fastify-plugin/index.js"
         },
         {
+          authorEmail: this.props.authorEmail,
+          authorName: this.props.authorName,
+          authorWebsite: this.props.authorWebsite,
           baseName: this.props.name,
           description: `A fastify plugin for the ${this.props.name} library`,
           destinationPath: "packages/fastify",
           installationType: "library",
-          private: this.props.private, 
           scope: this.props.scope,
           version: this.props.version,
         }

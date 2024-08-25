@@ -2,10 +2,14 @@
   "name": "@<%= scope %>/<%= name %>",
   "version": "<%= version %>",
   "homepage": "https://github.com/<%= scope %>/<%= name %>#readme",
-<%_ if (private) { _%>
-  "private": true,
-  "license": "UNLICENSED",
+<%_ if (authorName) { _%>
+  "author": {
+    "name": "<%= authorName %>"<%_ if (authorEmail) { %>,
+    "email": "<%= authorEmail %>"<% } %><%_ if (authorWebsite) { %>,
+    "url": "<%= authorWebsite %>"<% } %>
+  },
 <%_ } _%>
+  "private": true,
   "repository": {
     "type": "git",
     "url": "git+https://github.com/<%= scope %>/<%= name %>.git"
