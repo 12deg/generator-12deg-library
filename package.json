@@ -30,18 +30,18 @@
     "lint": "eslint",
     "lint:fix": "eslint --fix",
     "prepare": "husky",
-    "pretest": "eslint .",
     "publish": "npx shipjs trigger",
     "release": "npx shipjs prepare",
     "sort-package": "npx sort-package-json",
+    "pretest": "eslint .",
     "test": "jest --passWithNoTests"
   },
   "jest": {
-    "testEnvironment": "node",
     "modulePathIgnorePatterns": [
       "node_modules/",
       "generators/.*/templates/"
-    ]
+    ],
+    "testEnvironment": "node"
   },
   "dependencies": {
     "yeoman-environment": "4.4.1",
