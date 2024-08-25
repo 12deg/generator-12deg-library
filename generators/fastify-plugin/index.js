@@ -37,6 +37,36 @@ export default class FastifyPluginGenerator extends Generator {
       this.props.version = this.options.version;
     }
 
+    if (!this.options.authorName) {
+      prompts.push({
+        message: "Author name",
+        name: "authorName",
+        type: "input",
+      });
+    } else {
+      this.props.authorName = this.options.authorName;
+    }
+    
+    if (!this.options.authorEmail) {
+      prompts.push({
+        message: "Author email",
+        name: "authorEmail",
+        type: "input",
+      });
+    } else {
+      this.props.authorEmail = this.options.authorEmail;
+    }
+
+    if (!this.options.authorWebsite) {
+      prompts.push({
+        message: "Author website",
+        name: "authorWebsite",
+        type: "input",
+      });
+    } else {
+      this.props.authorWebsite = this.options.authorWebsite;
+    }
+
     if (!this.options.installationType) {
       prompts.push({
         message: "Choose the type of installation:",

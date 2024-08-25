@@ -12,12 +12,19 @@
 <%_ } _%>
 <%_ if (installationType == 'standalone') { _%>
   "homepage": "https://github.com/<%= scope %>/<%= name %>#readme",
+  "private": true,
   "repository": {
     "type": "git",
     "url": "git+https://github.com/<%= scope %>/<%= name %>.git"
   },
 <%_ } _%>
-  "license": "MIT",
+<%_ if (authorName) { _%>
+  "author": {
+    "name": "<%= authorName %>"<%_ if (authorEmail) { %>,
+    "email": "<%= authorEmail %>"<% } %><%_ if (authorWebsite) { %>,
+    "url": "<%= authorWebsite %>"<% } %>
+  },
+<%_ } _%>
   "type": "module",
   "exports": {
     ".": {
