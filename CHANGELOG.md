@@ -1,3 +1,8 @@
+## 1.0.0-rc2 (2024-08-25)
+
+
+
+
 ## 1.0.0-rc1 (2024-08-25)
 
 * chore: add test in pre commit ([82f47a7](https://github.com/12deg/generator-12deg-library/commit/82f47a7))
