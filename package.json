@@ -1,8 +1,14 @@
 {
   "name": "generator-12deg-library",
-  "version": "0.2.0",
+  "version": "1.0.0-rc1",
   "description": "",
-  "keywords": ["devops", "generator", "library", "package", "yeoman"],
+  "keywords": [
+    "devops",
+    "generator",
+    "library",
+    "package",
+    "yeoman"
+  ],
   "homepage": "https://github.com/12deg/generator-12deg-library",
   "repository": {
     "type": "git",
@@ -16,7 +22,9 @@
   },
   "type": "module",
   "exports": "./generators/app/index.js",
-  "files": ["generators"],
+  "files": [
+    "generators"
+  ],
   "scripts": {
     "commitlint": "node @commitlint/prompt-cli/cli.js",
     "lint": "eslint",
@@ -30,7 +38,10 @@
   },
   "jest": {
     "testEnvironment": "node",
-    "modulePathIgnorePatterns": ["node_modules/", "generators/.*/templates/"]
+    "modulePathIgnorePatterns": [
+      "node_modules/",
+      "generators/.*/templates/"
+    ]
   },
   "dependencies": {
     "yeoman-environment": "4.4.1",
