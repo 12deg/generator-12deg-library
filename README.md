@@ -17,6 +17,13 @@ To install `yo` globally, run:
 npm install -g yo
 ```
 
+## Installation
+To install this generator globally, run:
+
+```bash
+npm install -g generator-12deg-library
+```
+
 ## Usage
 
 ### Generate the monorepo
