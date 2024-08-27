@@ -30,8 +30,6 @@
     "lint": "eslint",
     "lint:fix": "eslint --fix",
     "prepare": "husky",
-    "publish": "npx shipjs trigger",
-    "release": "npx shipjs prepare",
     "sort-package": "npx sort-package-json",
     "pretest": "eslint .",
     "test": "jest --passWithNoTests"
