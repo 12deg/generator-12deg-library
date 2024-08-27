@@ -1,3 +1,10 @@
+## <small>1.0.6 (2024-08-27)</small>
+
+* chore: reinstall shipjs as a depedency ([7430652](https://github.com/12deg/generator-12deg-library/commit/7430652))
+* chore: remove shipjs as a dependency ([b38c363](https://github.com/12deg/generator-12deg-library/commit/b38c363))
+
+
+
 ## <small>1.0.5 (2024-08-27)</small>
 
 * chore: fix package.json ([431b8c2](https://github.com/12deg/generator-12deg-library/commit/431b8c2))
