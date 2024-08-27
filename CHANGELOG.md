@@ -1,3 +1,10 @@
+## <small>1.0.5 (2024-08-27)</small>
+
+* chore: fix package.json ([431b8c2](https://github.com/12deg/generator-12deg-library/commit/431b8c2))
+* chore: fix shipjs commands ([ed5b68b](https://github.com/12deg/generator-12deg-library/commit/ed5b68b))
+
+
+
 ## <small>1.0.4 (2024-08-27)</small>
 
 * chore: manually bumped up minor ([1f3eaf9](https://github.com/12deg/generator-12deg-library/commit/1f3eaf9))
