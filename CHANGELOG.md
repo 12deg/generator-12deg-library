@@ -1,3 +1,9 @@
+## <small>1.0.4 (2024-08-27)</small>
+
+* chore: manually bumped up minor ([1f3eaf9](https://github.com/12deg/generator-12deg-library/commit/1f3eaf9))
+
+
+
 ## <small>1.0.2 (2024-08-27)</small>
 
 * chore: update dependencies ([445b504](https://github.com/12deg/generator-12deg-library/commit/445b504))
