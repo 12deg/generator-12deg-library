@@ -1,6 +1,6 @@
 {
   "name": "generator-12deg-library",
-  "version": "1.0.0-rc4",
+  "version": "1.0.0",
   "description": "A yeoman generator for creating a multi-package nodejs library",
   "keywords": [
     "devops",

@@ -1,3 +1,9 @@
+## 1.0.0 (2024-08-27)
+
+* docs: update package description ([e9518db](https://github.com/12deg/generator-12deg-library/commit/e9518db))
+
+
+
 ## 1.0.0-rc4 (2024-08-27)
 
 * docs: add package installation instruction ([0a7a315](https://github.com/12deg/generator-12deg-library/commit/0a7a315))
