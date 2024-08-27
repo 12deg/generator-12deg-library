@@ -1,3 +1,9 @@
+## <small>1.0.1 (2024-08-27)</small>
+
+* chore: fix license copyright holder ([436d3bb](https://github.com/12deg/generator-12deg-library/commit/436d3bb))
+
+
+
 ## 1.0.0 (2024-08-27)
 
 * docs: update package description ([e9518db](https://github.com/12deg/generator-12deg-library/commit/e9518db))
