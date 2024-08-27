@@ -1,3 +1,9 @@
+## <small>1.0.2 (2024-08-27)</small>
+
+* chore: update dependencies ([445b504](https://github.com/12deg/generator-12deg-library/commit/445b504))
+
+
+
 ## <small>1.0.1 (2024-08-27)</small>
 
 * chore: fix license copyright holder ([436d3bb](https://github.com/12deg/generator-12deg-library/commit/436d3bb))
