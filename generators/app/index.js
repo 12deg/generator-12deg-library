@@ -44,9 +44,9 @@ export default class LibraryGenerator extends Generator {
         message: "Include fastify plugin?",
         name: "fastifyPlugin",
         type: "confirm",
-      }
+      },
     ]);
-  };
+  }
 
   async writing() {
     await this.fs.copyTplAsync(
@@ -57,18 +57,18 @@ export default class LibraryGenerator extends Generator {
         ...this.options,
       },
       {},
-      { 
-        globOptions: { 
+      {
+        globOptions: {
           dot: true,
-        }
+        },
       },
     );
 
     if (this.props.fastifyPlugin) {
       await this.composeWith(
-        { 
-          Generator: FastifyPluginGenerator, 
-          path: "../fastify-plugin/index.js"
+        {
+          Generator: FastifyPluginGenerator,
+          path: "../fastify-plugin/index.js",
         },
         {
           authorEmail: this.props.authorEmail,
@@ -80,8 +80,8 @@ export default class LibraryGenerator extends Generator {
           installationType: "library",
           scope: this.props.scope,
           version: this.props.version,
-        }
+        },
       );
     }
   }
-};
+}
