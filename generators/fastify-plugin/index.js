@@ -105,8 +105,14 @@ export default class FastifyPluginGenerator extends Generator {
     }
 
     if (!this.options.destinationPath) {
+      const defaultPath = this.props.installationType === "library"
+        ? "./packages/fastify"
+        : this.props.installationType === "app"
+          ? "./libs/fastify"
+          : `./${this.props.name}`;
+
       const { destinationPath } = await this.prompt({
-        default: `${this.props.name}`,
+        default: defaultPath,
         message: "Destination path",
         name: "destinationPath",
         type: "input",
@@ -129,7 +135,7 @@ export default class FastifyPluginGenerator extends Generator {
       name: "description",
       type: "input"
     });
-    
+
     this.props["description"] = description;
 
     this.props["displayName"] = 
