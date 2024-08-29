@@ -19,7 +19,9 @@ export default class FastifyPluginGenerator extends Generator {
         type: "input",
       },
       {
-        default: this.options.baseName? `${this.options.baseName}-fastify`: "fastify",
+        default: this.options.baseName
+          ? `${this.options.baseName}-fastify`
+          : "fastify",
         message: "Fastify plugin name",
         name: "name",
         type: "input",
@@ -46,7 +48,7 @@ export default class FastifyPluginGenerator extends Generator {
     } else {
       this.props.authorName = this.options.authorName;
     }
-    
+
     if (!this.options.authorEmail) {
       prompts.push({
         message: "Author email",
@@ -75,15 +77,15 @@ export default class FastifyPluginGenerator extends Generator {
         choices: [
           {
             name: "Generate this fastify plugin in library monorepo",
-            value: "library"
+            value: "library",
           },
           {
             name: "Generate this fastify plugin in app monorepo",
-            value: "app"
+            value: "app",
           },
           {
             name: "Standalone",
-            value: "standalone"
+            value: "standalone",
           },
         ],
       });
@@ -99,17 +101,18 @@ export default class FastifyPluginGenerator extends Generator {
         type: "input",
       });
 
-      this.props["baseName"] = baseName; 
+      this.props["baseName"] = baseName;
     } else {
       this.props["baseName"] = this.options.baseName;
     }
 
     if (!this.options.destinationPath) {
-      const defaultPath = this.props.installationType === "library"
-        ? "./packages/fastify"
-        : this.props.installationType === "app"
-          ? "./libs/fastify"
-          : `./${this.props.name}`;
+      const defaultPath =
+        this.props.installationType === "library"
+          ? "./packages/fastify"
+          : this.props.installationType === "app"
+            ? "./libs/fastify"
+            : `./${this.props.name}`;
 
       const { destinationPath } = await this.prompt({
         default: defaultPath,
@@ -124,53 +127,53 @@ export default class FastifyPluginGenerator extends Generator {
     }
 
     const { description } = await this.prompt({
-      default: this.options.description 
+      default: this.options.description
         ? this.options.description
         : generateDescription(
             this.props.installationType,
             this.options.name || this.props.name,
-            this.props.baseName
-        ),
+            this.props.baseName,
+          ),
       message: "Enter fastify plugin description",
       name: "description",
-      type: "input"
+      type: "input",
     });
 
     this.props["description"] = description;
 
-    this.props["displayName"] = 
-      [this.props.scope, this.props.name]
+    this.props["displayName"] = [this.props.scope, this.props.name]
       .join("-")
       .split("-")
-      .map(token => token.charAt(0).toUpperCase() + token.slice(1))
+      .map((token) => token.charAt(0).toUpperCase() + token.slice(1))
       .join("");
-  };
+  }
 
   async writing() {
     await this.fs.copyTplAsync(
       this.templatePath(),
-      this.destinationPath(path.join(this.options.baseName || "", this.props.destinationPath )),
+      this.destinationPath(
+        path.join(this.options.baseName || "", this.props.destinationPath),
+      ),
       {
         ...this.props,
         ...this.options,
       },
       {},
       {
-        globOptions: { 
+        globOptions: {
           dot: true,
-        }
+        },
       },
     );
   }
-};
+}
 
 const capitalize = (word) => {
   return word ? word.charAt(0).toUpperCase() + word.slice(1) : word;
 };
 
 const generateDescription = (installationType, name, baseName) => {
-  let description,
-      capitalizedName;
+  let description, capitalizedName;
 
   switch (installationType) {
     case "library":
@@ -186,4 +189,4 @@ const generateDescription = (installationType, name, baseName) => {
   }
 
   return description;
-}
+};
