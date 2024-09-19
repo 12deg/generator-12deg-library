@@ -2,34 +2,35 @@
 
 ## Packages
 
-# Installation & Usage
-## Install dependencies
+## Installation & Usage
+
+### Install dependencies
 Install dependencies recursively with this command
 ```bash
 make install
 ```
 
-## Build all packages
+### Build all packages
 ```bash
 make build
 ```
 
-## Lint code
+### Lint code
 ```bash
 make lint
 ```
 
-## Typecheck code
+### Typecheck code
 ```bash
 make typecheck
 ```
 
-## Test
+### Test
 ```bash
 make test
 ```
 
-# Developing locally & testing
+## Developing locally & testing
 You can test these libraries locally without releasing using the `pnpm link` command. This allows your application to use the local version of the library instead of the published one. [More on pnpm link](https://pnpm.io/cli/link).
 
 To link a library locally, run this command from the respective app directory:
