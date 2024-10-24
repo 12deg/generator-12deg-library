@@ -1,4 +1,4 @@
-module.exports = { 
+module.exports = {
   appname: "generator-12deg-library",
   buildCommand: () => null,
   publishCommand: () => {
